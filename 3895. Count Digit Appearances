@@ -1,0 +1,10 @@
+class Solution:
+    def countDigitOccurrences(self, nums: list[int], digit: int) -> int:
+        s = str(digit)
+        count = 0
+        for n in nums:
+            string = str(n)
+            for i in string:
+                if s == i:
+                    count += 1
+        return count
