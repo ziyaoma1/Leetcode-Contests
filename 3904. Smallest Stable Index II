@@ -1,0 +1,17 @@
+class Solution:
+    def firstStableIndex(self, nums: list[int], k: int) -> int:
+        m1 = nums[0]
+        m2 = nums[-1]
+        lst1 = []
+        lst2 = deque([])
+        for i in range(len(nums)):
+            if nums[i] > m1:
+                m1 = nums[i]
+            if nums[-i-1] <= m2:
+                m2 = nums[-i-1]
+            lst1.append(m1)
+            lst2.appendleft(m2)
+        for x in range(len(nums)):
+            if lst1[x] - lst2[x] <= k:
+                return x
+        return -1
