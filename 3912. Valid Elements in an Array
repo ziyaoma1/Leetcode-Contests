@@ -1,0 +1,23 @@
+class Solution:
+    def findValidElements(self, nums: list[int]) -> list[int]:
+        left = 0
+        res = []
+        for num in range(len(nums)):
+            added = False
+            if nums[num] > left:
+                left = nums[num]
+                added = True
+            if num < len(nums) - 1:
+                right = max(nums[num + 1:])
+            else:
+                right = 0
+            if nums[num] > right:
+                added = True
+            if num == len(nums) - 1:
+                added = True
+            if added:
+                res.append(nums[num])
+        return res
+            
+            
+        
